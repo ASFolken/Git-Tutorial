@@ -6,7 +6,7 @@
   
 __git init__ -> créer un dossier géré par git     
 __git add__ -> ajouter un ou plusieurs fichier dans le comit   
-__git reset__ -> enlever un ou plusieurs fichier dans le comit      
+__git reset HEAD~1__ -> enlever un ou plusieurs fichier dans le comit ou revenir en arriere en local   
 __git rm__ -> supprimer les fichiers et enlevé du staged 
 __git status__ -> etat du commit       
 __git commit -m "message"__ -> comité avec un message       
@@ -35,8 +35,8 @@ __git diff --staged__ ->  voir la différences au niveau des fichiers entre ma v
 __git branch branche_name__ -> créer une branche       
 __git checkout branche_name__ ->  switcher d'une branche a une autre  
 __git merge branche_name__ -> mélanger la branche avec le principal                      
-__git branch -d branch name__ -> suprimer ne branche
-      
-    git remote add origin https://github.com/ASFolken/Git-Tutorial.git
-    git push -u origin master
-    git diff HEAD
+__git rebase branche_name__ -> mélanger la branche avec le principal et retourne sur avancement linéaire    
+__git branch -d branch name__ -> suprimer une branche
+__git revert HEAD^__ -> revenir en arrière sur le remote
+__git cherry-pick HEAD HEAD2__ -> copier le commit dans la branche actuelle
+__git rebase -i HEAD__ -> rebase interactif
