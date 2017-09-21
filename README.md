@@ -61,7 +61,7 @@ Les logicieles interessant, SmartGit
 
 ## Le Workflow dans un projet
 
-1. Créer le projet depuis un repot avec `git clone <url>`        
+1. __Créer le projet__ depuis un repot avec `git clone <url>`        
    Créer directement le projet en local `git init` puis le connecter au remote 'git remote add <remote> <url>'       
    Créer une clef ssh `ssh-keygen` et l'ajouter sur github
        
@@ -71,19 +71,18 @@ __Pull__ : télécharge les nouveaux fichiers et tente de merger avec vos fichie
 `git pull --rebase <remote>` simplifier l'historique en faisant un rebase      
 `git config --global branch.autosetuprebase always`  automatiser le rebase dans la config      
                 
-3. Créer une branche pour résoudre un problème ou développer une nouvelle fonctionnalité        
+3. __Utiliser une branche__ pour résoudre un problème ou développer une nouvelle fonctionnalité        
 `git checkout -b <branche>` créer une branche et switcher dessus     
 `git rebase -i` permet de modifier ou jouer avec l'historique en local avant de commit pour arranger la structure    
-    __pick__, permet de d'inclure le commit. On peut en profiter pour changer l'ordre des différents commit
-    __reword__, permet d'inclure le commit tout en ayant la possibiliter de changer le message
-    __edit__, permet d'éditer le commit. En séparant en plusieurs commits par exemple
-    __squash__, combine le commit avec le commit du dessus et permet de changer le message du commit
-    __fixup__, comme squash mais utilisera le message du commit situé au dessus
-    __exec__, permet de lancer des commandes shell sur le commit
+    __pick__, permet de d'inclure le commit. On peut en profiter pour changer l'ordre des différents commit      
+    __reword__, permet d'inclure le commit tout en ayant la possibiliter de changer le message     
+    __edit__, permet d'éditer le commit. En séparant en plusieurs commits par exemple      
+    __squash__, combine le commit avec le commit du dessus et permet de changer le message du commit      
+    __fixup__, comme squash mais utilisera le message du commit situé au dessus     
+    __exec__, permet de lancer des commandes shell sur le commit      
+   
 
-
-
-4. Revenir en arrière        
+4. __Revenir en arrière__        
 `git checkout <idCommit>` Juste pour voir mais pas de modificaiton           
 `git checkout <idCommit> <fichier>` Pour remplacer un fichier        
 `git revert <idCommit>` Cette commande va défaire ce qui avait été fait au moment du <commit> en créant un nouveau commit. Cela n'altère pas l'historique mais va ajouter un nouveau commit d'inversion       
@@ -94,19 +93,21 @@ __Pull__ : télécharge les nouveaux fichiers et tente de merger avec vos fichie
 `git reset <commit> --hard` Permet de revenir au <commit> et réinitialise la zone de staging et le dossier de travail pour correspondre.     
 `git commit --amend` L'argument --amend permet de rajouter les fichier en staging dans le commit précédent. Ceci permet de corriger un oubli et d'éviter de faire 10 commits pour la même chose.     
      
-4. 1. Sauvegarder les modifications facilement en local pour changer de branche ou répondre a un autre comit rapidement      
+5. __Sauvegarder les modifications__ facilement en local pour changer de branche ou répondre a un autre comit rapidement      
             
 `git stash` Cette commande va mettre de côté toutes les modifications qui ont été apportées au projet depuis le dernier commit     
 `git stash apply` coller les différentes différences dans le stash     
 `git stash list` voir l'ensemble des stash sauvegardés avec     
 `git stash drop` vider les différentes stash en mémoire     
-        
-5. Uploader vos modification sur le remote avec `git push <remote> <branche>`     
-     
-6. Appliquer les changement avec Merge    
+`git add .` ajouter les fichiers au futur commit       
+`git commit -a -m "<message>"` commiter les changement sur la branch      
+           
+6. __Uploader vos modification__ sur le remote avec `git push <remote> <branche>`     
+       
+7. Appliquer les changement avec Merge    
  git merge <branche>         
-     
-7. Vérifier ce qui c'est passé sur un fichier `git log -n 2 --oneline -p nomFichier`     
+      
+8. Vérifier ce qui c'est passé sur un fichier `git log -n 2 --oneline -p nomFichier`     
 `git log --oneline`       # avoir une seule ligne pour les logs pratique pour l'arbo     
 `git log -n <X>`          # remonter les log avec une profondeur de X     
 `git log -p <fichier>`    # avoir les logs des comits concernant un fichier en particulier     
