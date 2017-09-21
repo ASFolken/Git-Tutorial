@@ -65,12 +65,14 @@ Les logicieles interessant, SmartGit
    Créer directement le projet en local `git init` puis le connecter au remote 'git remote add <remote> <url>'       
    Créer une clef ssh `ssh-keygen` et l'ajouter sur github
        
+
 2. Prendre la dernière version du projet `git fetch <remote>` ou `git pull <remote> <branch>`            
 __Fetch__ : télécharge les nouveaux fichiers d'un remote mais ne met pas à jour les fichiers actuees        
 __Pull__ : télécharge les nouveaux fichiers et tente de merger avec vos fichiers actuels       
 `git pull --rebase <remote>` simplifier l'historique en faisant un rebase      
 `git config --global branch.autosetuprebase always`  automatiser le rebase dans la config      
-                
+      
+          
 3. __Utiliser une branche__ pour résoudre un problème ou développer une nouvelle fonctionnalité        
 `git checkout -b <branche>` créer une branche et switcher dessus     
 `git rebase -i` permet de modifier ou jouer avec l'historique en local avant de commit pour arranger la structure    
@@ -93,21 +95,24 @@ __Pull__ : télécharge les nouveaux fichiers et tente de merger avec vos fichie
 `git reset <commit> --hard` Permet de revenir au <commit> et réinitialise la zone de staging et le dossier de travail pour correspondre.     
 `git commit --amend` L'argument --amend permet de rajouter les fichier en staging dans le commit précédent. Ceci permet de corriger un oubli et d'éviter de faire 10 commits pour la même chose.     
      
+
 5. __Sauvegarder les modifications__ facilement en local pour changer de branche ou répondre a un autre comit rapidement      
-            
 `git stash` Cette commande va mettre de côté toutes les modifications qui ont été apportées au projet depuis le dernier commit     
 `git stash apply` coller les différentes différences dans le stash     
 `git stash list` voir l'ensemble des stash sauvegardés avec     
 `git stash drop` vider les différentes stash en mémoire     
 `git add .` ajouter les fichiers au futur commit       
 `git commit -a -m "<message>"` commiter les changement sur la branch      
-           
+        
+   
 6. __Uploader vos modification__ sur le remote avec `git push <remote> <branche>`     
-       
-7. Appliquer les changement avec Merge    
+`git push <remote>`     # pousse tout le remote avec toutes les branches
+
+7. __Appliquer les changement__ avec Merge    
  git merge <branche>         
       
-8. Vérifier ce qui c'est passé sur un fichier `git log -n 2 --oneline -p nomFichier`     
+
+8. __Vérifier__ ce qui c'est passé sur un fichier `git log -n 2 --oneline -p nomFichier`     
 `git log --oneline`       # avoir une seule ligne pour les logs pratique pour l'arbo     
 `git log -n <X>`          # remonter les log avec une profondeur de X     
 `git log -p <fichier>`    # avoir les logs des comits concernant un fichier en particulier     
