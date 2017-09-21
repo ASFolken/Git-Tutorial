@@ -13,8 +13,7 @@ Les logicieles interessant, SmartGit
     sudo add-apt-repository ppa:eugenesan/ppa
     sudo apt-get update
     sudo apt-get install smartgit
-
-    
+        
 ![File Statut](https://i.stack.imgur.com/ppgRW.png)
        
   1. Gérer le projet et l'historique      
@@ -74,7 +73,16 @@ __Pull__ : télécharge les nouveaux fichiers et tente de merger avec vos fichie
                 
 3. Créer une branche pour résoudre un problème ou développer une nouvelle fonctionnalité        
 `git checkout -b <branche>` créer une branche et switcher dessus     
-       
+`git rebase -i` permet de modifier ou jouer avec l'historique en local avant de commit pour arranger la structure    
+    __pick__, permet de d'inclure le commit. On peut en profiter pour changer l'ordre des différents commit
+    __reword__, permet d'inclure le commit tout en ayant la possibiliter de changer le message
+    __edit__, permet d'éditer le commit. En séparant en plusieurs commits par exemple
+    __squash__, combine le commit avec le commit du dessus et permet de changer le message du commit
+    __fixup__, comme squash mais utilisera le message du commit situé au dessus
+    __exec__, permet de lancer des commandes shell sur le commit
+
+
+
 4. Revenir en arrière        
 `git checkout <idCommit>` Juste pour voir mais pas de modificaiton           
 `git checkout <idCommit> <fichier>` Pour remplacer un fichier        
@@ -86,13 +94,12 @@ __Pull__ : télécharge les nouveaux fichiers et tente de merger avec vos fichie
 `git reset <commit> --hard` Permet de revenir au <commit> et réinitialise la zone de staging et le dossier de travail pour correspondre.     
 `git commit --amend` L'argument --amend permet de rajouter les fichier en staging dans le commit précédent. Ceci permet de corriger un oubli et d'éviter de faire 10 commits pour la même chose.     
      
-4.1 Sauvegarder les modifications facilement en local pour changer de branche ou répondre a un autre comit rapidement      
+4. 1. Sauvegarder les modifications facilement en local pour changer de branche ou répondre a un autre comit rapidement      
             
 `git stash` Cette commande va mettre de côté toutes les modifications qui ont été apportées au projet depuis le dernier commit     
 `git stash apply` coller les différentes différences dans le stash     
 `git stash list` voir l'ensemble des stash sauvegardés avec     
 `git stash drop` vider les différentes stash en mémoire     
-
         
 5. Uploader vos modification sur le remote avec `git push <remote> <branche>`     
      
@@ -100,10 +107,7 @@ __Pull__ : télécharge les nouveaux fichiers et tente de merger avec vos fichie
  git merge <branche>         
      
 7. Vérifier ce qui c'est passé sur un fichier `git log -n 2 --oneline -p nomFichier`     
+`git log --oneline`       # avoir une seule ligne pour les logs pratique pour l'arbo     
+`git log -n <X>`          # remonter les log avec une profondeur de X     
+`git log -p <fichier>`    # avoir les logs des comits concernant un fichier en particulier     
 
-<<<<<<< HEAD
-
-
-Fin 
-=======
->>>>>>> 51dff15... Edit ReadMe 1
