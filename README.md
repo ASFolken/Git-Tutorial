@@ -26,6 +26,7 @@
   
     git init                    # créer un dossier géré par git
     git add <fichier>           # ajouter un ou plusieurs fichier dans le comit
+    git add -p                  # ajouter les fichier un par un en validant les diff (y,n, ou s pour couper en morceaux les fichiers)
     git reset HEAD~1            # enlever un ou plusieurs fichier dans le comit ou revenir en arriere en local
     git rm                      # supprimer les fichiers et enlevé du staged 
     git mv <from> <to>          # deplacer les fichiers
@@ -57,6 +58,7 @@
     git branch -D <branche>     # Supprime la branche même si elle n'a pas été fusionnée
     git checkout <branche>         # switcher d'une branche a une autre  (avec -b créer la branche et met le head dessus)
     git checkout -b <branche>      # switcher sur une branche et la créer si existe pas
+    git checkout -- <file>         # revenir en arriere sur un fichier et le replacer au niveau du head
     git merge <branche>            # Merge permet de ramener une branche sur une autre et ainsi de la fusionner, se fait à partir de la branche principale.
     git rebase <branche>           # mélanger la branche avec le principal et retourne sur avancement linéaire, se fait à partir de la branche fille
     git branch -d <branche>        # suprimer une branche
@@ -115,6 +117,7 @@ __Passer sur une branche modifie les fichiers dans le workingDirectory__
 `git stash list` voir l'ensemble des stash sauvegardés avec     
 `git stash drop` vider les différentes stash en mémoire     
 `git add .` ajouter les fichiers au futur commit       
+`git add -p` ajout avec validation de chaque fichier       
 `git commit -a -m "<message>"` commiter les changement sur la branch      
 `echo \*.tmp > .gitignore` les fichiers ajoutés dans .gitignore à la racine sont ignoré par le staging     
         
