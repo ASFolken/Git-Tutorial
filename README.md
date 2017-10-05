@@ -27,12 +27,12 @@
     git init                    # créer un dossier géré par git
     git add <fichier>           # ajouter un ou plusieurs fichier dans le comit
     git add -p                  # ajouter les fichier un par un en validant les diff (y,n, ou s pour couper en morceaux les fichiers)
-    git reset HEAD~1            # enlever un ou plusieurs fichier dans le comit ou revenir en arriere en local
+    git reset HEAD~1            # revenir sur le head précedent
     git rm                      # supprimer les fichiers et enlevé du staged 
     git mv <from> <to>          # deplacer les fichiers
     git status                  # etat du commit et file status lifecycle
     git commit -a -m "message"  # comité avec un message (-a ajoute tous les fichiers modifiés)
-    git commit --amend          # modifier le dernier comit,
+    git commit --amend          # modifier le dernier commit
     git log                     # afficher les logs des différents commits
     
   2.  Gérer les système envoi/reception de fichiers      
@@ -42,11 +42,11 @@
     git remote add <alias> <chemin/url> # Ajoute un nouveau dépôt distant
     git remote rm <alias>               # Supprimé un dépôt distant
     git remote rename <old> <new>       # renomer le remote
-    git fetch <remote>                  # telecharger le remote
+    git fetch <remote>                  # telecharger les info remote mais ne merge pas
     git push -u <remote> <branche>      # uploader les fichiers dans le repository dans la branche master
-    git pull <remote> branche           # télécharger les fichiers depuis le repository dans la branche master
-    git diff HEAD                       # voir la différences des header entre ma version et le repo
-    git diff --staged                   # voir la différences au niveau des fichiers entre ma version et le repo
+    git pull <remote> branche           # télécharger les fichier et merge sur la branche active
+    git diff HEAD                       # voir les modifications entre ma version en cours et le dernière HEAD
+    git diff --staged                   # voir les modifications uniquement sur mes fichiers staged
     git config --global branch.autosetuprebase always # pull avec rebase automatique
      
   3. Gérer le système de branche     
@@ -63,7 +63,7 @@
     git rebase <branche>           # mélanger la branche avec le principal et retourne sur avancement linéaire, se fait à partir de la branche fille
     git branch -d <branche>        # suprimer une branche
     git revert HEAD^               # revenir en arrière sur le remote
-    git cherry-pick HEAD HEAD2     # copier le commit dans la branche actuelle
+    git cherry-pick HEAD HEAD2     # copier un comit d'un head a un autre
     git rebase -i HEAD             # rebase interactif
 
 
@@ -89,7 +89,7 @@ Créer une clef ssh `ssh-keygen` et l'ajouter sur github
 `git checkout -b <branche>` créer une branche et switcher dessus     
 __Passer sur une branche modifie les fichiers dans le workingDirectory__
 `git rebase -i` permet de modifier ou jouer avec l'historique en local avant de commit pour arranger la structure    
-    __pick__, permet de d'inclure le commit. On peut en profiter pour changer l'ordre des différents commit      
+    __pick__, permet d'inclure le commit. On peut en profiter pour changer l'ordre des différents commit      
     __reword__, permet d'inclure le commit tout en ayant la possibiliter de changer le message     
     __edit__, permet d'éditer le commit. En séparant en plusieurs commits par exemple      
     __squash__, combine le commit avec le commit du dessus et permet de changer le message du commit      
